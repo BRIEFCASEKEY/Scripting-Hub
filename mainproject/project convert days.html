@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Convert Days</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      font-family: "Poppins", sans-serif;
+      font-size: 18px;
+    }
+
+    h1 { text-align: center; font-size: 35px; margin-top: 0; }
+
+    .container {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      gap: 40px;
+    }
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 10px;
+    }
+
+    #codeInput {
+      width: 800px;
+      height: 200px;
+      font-size: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      background: #0d0d0d;
+      color: white;
+      border: none;
+      font-family: "Poppins", sans-serif;
+    }
+
+    #output {
+      width: 300px;
+      height: 180px;
+      background: #0d0d0d;
+      color: white;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 18px;
+      border: none;
+    }
+
+    .neon {
+      border: 2px solid #00eaff;
+      box-shadow: 0 0 1px #00eaff, 0 0 10px #00eaff;
+      transition: 0.3s ease;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: 1px solid white;
+      background: black;
+      color: white;
+    }
+
+    button:hover {
+      background: rgba(0, 190, 255, 0.6);
+      color: black;
+      border: 1px solid rgba(0, 190, 255, 0.6);
+      transition: 0.3s ease;
+    }
+
+    #result { margin-top: 20px; font-size: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Lesson 5: Convert Days into Years, Weeks, and Days</h1>
+  <p id="instructions"> <b>In C program, to convert days into years, weeks, and days in C, we divide the total days by 365 to get years, then use the remainder to find weeks using division by 7, and the final remainder gives leftover days.</b>
+    Formula to convert days:<br>
+    <b>Years = days / 365</b><br>
+    <b>Weeks = (days % 365) / 7</b><br>
+    <b>Days = (days % 365) % 7</b><br><br>
+    <b>Example:</b><br>
+    <span style="line-height:26px;">
+    #include&lt;stdio.h&gt;<br>
+    int main() {<br>
+    &nbsp;&nbsp;int days = 500;<br>
+    &nbsp;&nbsp;int years = days / 365;<br>
+    &nbsp;&nbsp;int weeks = (days % 365) / 7;<br>
+    &nbsp;&nbsp;int remDays = (days % 365) % 7;<br>
+    &nbsp;&nbsp;printf("Years = %d\\nWeeks = %d\\nDays = %d", years, weeks, remDays);<br>
+    &nbsp;&nbsp;return 0;<br>
+    }
+    </span><br><br>
+    Now write your own code to convert <b>total days = 520</b> into years, weeks, and days.
+  </p>
+
+  <div class="container">
+    <div class="box">
+      <p><b>Your Code:</b></p>
+      <textarea id="codeInput" class="neon" placeholder="Type code here..."></textarea>
+      <button onclick="checkDaysCode()">Run</button>
+    </div>
+
+    <div class="box">
+      <p><b>Program Output:</b></p>
+      <div id="output" class="neon"></div>
+      <p id="result"></p>
+    </div>
+  </div>
+
+  <script>
+    const totalDays = 520; // fixed different from example
+
+    function checkDaysCode() {
+      let userCode = document.getElementById("codeInput").value.toLowerCase();
+      let result = document.getElementById("result");
+      let output = document.getElementById("output");
+
+      let clean = userCode.replace(/\s+/g, '');
+
+      // calculate expected output
+      const years = Math.floor(totalDays / 365);
+      const weeks = Math.floor((totalDays % 365) / 7);
+      const remDays = (totalDays % 365) % 7;
+
+      // validation
+      const hasHeader   = clean.includes("#include<stdio.h>");
+      const hasMain     = clean.includes("intmain()");
+      const daysCorrect = clean.includes(`days=${totalDays}`);
+      const yearsCalc   = clean.includes("years=days/365");
+      const weeksCalc   = clean.includes("weeks=(days%365)/7");
+      const daysCalc    = clean.includes("remdays=(days%365)%7") || clean.includes("days=(days%365)%7");
+      const hasPrint    = clean.includes("printf") && clean.includes("%d");
+
+      if(hasHeader && hasMain && daysCorrect && yearsCalc && weeksCalc && daysCalc && hasPrint) {
+        result.innerHTML = "✅ Correct!";
+        result.style.color = "green";
+        output.innerHTML = `Output:\nYears = ${years}\nWeeks = ${weeks}\nDays = ${remDays}`;
+      } else {
+        result.innerHTML = "❌ Incorrect!";
+        result.style.color = "red";
+        output.innerHTML = "";
+      }
+    }
+  </script>
+</body>
+</html>

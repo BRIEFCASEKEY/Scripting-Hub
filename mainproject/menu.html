@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scripting Hub — Main Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#000;
+  --card:#0f1113;
+  --muted:#bfc7d1;
+  --neon-c:#00bfff;
+  --neon-js:#ffb86b;
+  --neon-cpp:#a78bfa;
+  --neon-py:#7efc82;
+}
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+* { 
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif; 
+}
+body { margin:0; background:var(--bg); color:#fff; font-family:Poppins, sans-serif; }
+
+header { padding:28px 18px; text-align:center; }
+.brand { font-size:1.6rem; font-weight:700; letter-spacing:1px; color:#fff; }
+.tag { font-weight:300; color:var(--muted); font-size:0.9rem; margin-top:6px; }
+
+nav { display:flex; gap:12px; justify-content:center; padding:12px 18px; }
+.nav-link { color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:10px; font-weight:600; }
+.nav-link:hover { color:#fff; background:rgba(255,255,255,0.03); }
+
+.wrap { max-width:1100px; margin:28px auto; padding:0 18px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:14px;
+  padding:18px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(179,179,179,0.04);
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: floatIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.card.c {
+    box-shadow: 
+    0 0 1px #00eaff,
+    0 0 1px #00eaff,
+    0 0 1px #00eaff,
+    0 0 60px rgba(0, 190, 255, 0.2);
+  }
+.card.cpp {
+    box-shadow: 
+    0 0 1px #ad33ff,
+    0 0 1px #ad33ff,
+    0 0 1px #ad33ff,
+    0 0 60px rgba(153, 0, 255, 0.12);
+}
+.card.py {
+    box-shadow: 
+    0 0 1px #99ff99,
+    0 0 1px #99ff99,
+    0 0 1px #99ff99,
+    0 0 60px rgba(153, 255, 153, 0.12);
+}
+.card.js {
+    box-shadow: 
+    0 0 1px #ff944d,
+    0 0 1px #ff944d,
+    0 0 1px #ff944d,
+    0 0 60px rgba(255, 148, 77, 0.12);
+}
+.card.c:hover { border: 1px solid #00eaff }
+.card.cpp:hover { border: 1px solid #ad33ff }
+.card.py:hover { border: 1px solid #99ff99 }
+.card.js:hover { border: 1px solid #ff944d }
+
+.card .inner { position:relative; z-index:2; }
+.lang { display:flex; align-items:center; gap:12px; }
+.icon {
+  width:64px;
+  height:64px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:20px;
+  color:#000;
+}
+.title { font-size:1.1rem; font-weight:700; margin:6px 0; }
+.desc { color:var(--muted); font-size:0.95rem; margin-bottom:12px; }
+.actions { display:flex; gap:8px; }
+.outline {
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.06);
+  padding:9px 12px;
+  border-radius:10px;
+  color:var(--muted);
+  cursor:pointer;
+}
+.hover-c:hover {
+  background: #00eaff;
+  color: black;
+}
+.hover-cpp:hover {
+  background: #ad33ff;
+  color: black;
+}
+
+.hover-js:hover {
+  background: #ff944d;
+  color: black;
+}
+
+.hover-py:hover {
+  background: #99ff99;
+  color: black;
+}
+.c .icon { background:linear-gradient(135deg,#0ff 0%,#00a3ff 100%); }
+.cpp .icon { background:linear-gradient(135deg,#b88bff 0%,#7a5cff 100%); }
+.js .icon { background:linear-gradient(135deg,#ffd27a 0%,#ff9b3a 100%); }
+.py .icon { background:linear-gradient(135deg,#7efc82 0%,#23e29c 100%); }
+
+footer { margin-top:36px; padding:28px 18px; text-align:center; color:var(--muted); font-size:0.9rem; }
+a.lesson-link {
+    text-decoration: none;
+  }
+section {
+  opacity: 0;
+  animation: floatIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Scripting Hub</div>
+  <div class="tag">Interactive lessons • Practice playground • Beginner-friendly</div>
+</header>
+
+<nav>
+  <a class="nav-link" href="menu.html">Learn</a>
+  <a class="nav-link" href="practice.html">Concepts</a>
+  <a class="nav-link" href="about.html">About</a>
+  <a class="nav-link" href="profile.php">Profile</a>
+</nav>
+
+<main class="wrap">
+  <section id="learn">
+    <div class="grid">
+      <div class="card c">
+        <div class="inner">
+          <div class="lang">
+            <div class="icon">C</div>
+            <div style="flex:1">
+              <div class="title">C — Basics</div>
+              <div class="desc">Variables, data types, I/O, simple programs.</div>
+            </div>
+          </div>
+          <div class="actions">
+            <a href="LessonC.html" class="lesson-link"><button class="outline hover-c">Start</button></a>
+            <a href="cquiz.html" class="lesson-link"><button class="outline hover-c">Quiz</button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card cpp">
+        <div class="inner">
+          <div class="lang">
+            <div class="icon">C++</div>
+            <div style="flex:1">
+              <div class="title">C++ — OOP Basics</div>
+              <div class="desc">Classes, objects, constructors, methods.</div>
+            </div>
+          </div>
+          <div class="actions">
+            <a href="LessonCpp.html" class="lesson-link"><button class="outline hover-cpp">Start</button></a>
+            <a href="cppquiz.html" class="lesson-link"><button class="outline hover-cpp">Quiz</button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card js">
+        <div class="inner">
+          <div class="lang">
+            <div class="icon">JS</div>
+            <div style="flex:1">
+             <div class="title">JavaScript — DOM & Events</div>
+              <div class="desc">Interactivity with the DOM and events.</div>
+            </div>
+          </div>
+          <div class="actions">
+            <a href="LessonJS.html" class="lesson-link"><button class="outline hover-js">Start</button></a>
+            <a href="jsquiz.html" class="lesson-link"><button class="outline hover-js">Quiz</button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card py">
+        <div class="inner">
+          <div class="lang">
+            <div class="icon">PY</div>
+            <div style="flex:1">
+              <div class="title">Python — Basics</div>
+              <div class="desc">Syntax, variables, simple scripts.</div>
+            </div>
+          </div>
+          <div class="actions">
+            <a href="LessonPY.html" class="lesson-link"><button class="outline hover-py">Start</button></a>
+            <a href="pyquiz.html" class="lesson-link"><button class="outline hover-py">Quiz</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="practice" style="margin-top:40px; padding:0 18px;">
+    <h2>Practice & Challenges</h2>
+    <p style="color:var(--muted)">Try exercises after each lesson. Progress tracking not implemented in this demo.</p>
+  </section>
+</main>
+<footer>&copy; 2025 Scripting Hub. All rights reserved.</footer>
+</body>
+</html>

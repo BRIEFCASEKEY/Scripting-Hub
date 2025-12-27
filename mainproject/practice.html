@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scripting Hub — Concepts</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#000;
+  --card:#0f1113;
+  --muted:#bfc7d1;
+  --neon-c:#00a3ff;
+  --neon-cpp:#7a5cff;
+  --neon-js:#ff9b3a;
+  --neon-py:#23e29c;
+}
+@keyframes floatIn { from { opacity:0; transform:translateY(35px);} to { opacity:1; transform:translateY(0);} }
+
+* { box-sizing:border-box; font-family: "Poppins", sans-serif; }
+body { margin:0; background:var(--bg); color:#fff; }
+
+header { padding:28px 18px; text-align:center; }
+.brand { font-size:1.6rem; font-weight:700; letter-spacing:1px; color:#fff; }
+.tag { font-weight:300; color:var(--muted); font-size:0.9rem; margin-top:6px; }
+nav { display:flex; gap:12px; justify-content:center; padding:12px 18px; }
+.nav-link { color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:10px; font-weight:600; }
+.nav-link:hover { color:#fff; background:rgba(255,255,255,0.03); }
+
+.wrap { max-width:1100px; margin:28px auto; padding:0 18px; }
+section { margin-bottom:50px; }
+section h2 { font-size:1.8rem; margin-bottom:20px; color:#fff; }
+
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:14px;
+  padding:18px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+  opacity: 0;
+  animation: floatIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.card .inner { position:relative; z-index:2; }
+.card .title { font-size:1.1rem; font-weight:700; margin-bottom:8px; }
+.card .desc { color:var(--muted); font-size:0.95rem; }
+
+/* Language color accents */
+.card.c { border-left: 4px solid var(--neon-c); }
+.card.cpp { border-left: 4px solid var(--neon-cpp); }
+.card.js { border-left: 4px solid var(--neon-js); }
+.card.py { border-left: 4px solid var(--neon-py); }
+
+@media(max-width:600px){
+  .grid { grid-template-columns:1fr; }
+}
+footer { margin-top:36px; padding:28px 18px; text-align:center; color:var(--muted); font-size:0.9rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Scripting Hub</div>
+  <div class="tag">Interactive lessons • Practice playground • Beginner-friendly</div>
+</header>
+
+<nav>
+ <a class="nav-link" href="menu.html">Learn</a>
+  <a class="nav-link" href="practice.html">Concepts</a>
+  <a class="nav-link" href="about.html">About</a>
+  <a class="nav-link" href="profile.php">Profile</a>
+</nav>
+
+<main class="wrap">
+
+  <!-- C Basics -->
+  <section id="c">
+    <h2>C Basics</h2>
+    <div class="grid">
+      <div class="card c">
+        <div class="inner">
+          <div class="title">Variable</div>
+          <div class="desc">A named memory location to store data. Example: <code>int x = 5;</code></div>
+        </div>
+      </div>
+      <div class="card c">
+        <div class="inner">
+          <div class="title">Data Type</div>
+          <div class="desc">Defines the type of data a variable can hold. Example: int, char, float.</div>
+        </div>
+      </div>
+      <div class="card c">
+        <div class="inner">
+          <div class="title">Loop</div>
+          <div class="desc">Used to repeat a block of code multiple times. Example: for, while.</div>
+        </div>
+      </div>
+      <div class="card c">
+        <div class="inner">
+          <div class="title">Function</div>
+          <div class="desc">A reusable block of code that performs a task. Example: <code>int sum(int a,int b){return a+b;}</code></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C++ Basics -->
+  <section id="cpp">
+    <h2>C++ Basics</h2>
+    <div class="grid">
+      <div class="card cpp">
+        <div class="inner">
+          <div class="title">Class</div>
+          <div class="desc">Class is a blueprint for creating objects. Example: <code>class Car {...}</code></div>
+        </div>
+      </div>
+      <div class="card cpp">
+        <div class="inner">
+          <div class="title">Objects</div>
+          <div class="desc">An object is an instance of a class. It represents a real-world entity created from a class blueprint. Example: <code>Car myCar; ...</code></div>
+        </div>
+      </div>
+      <div class="card cpp">
+        <div class="inner">
+          <div class="title">Constructors</div>
+          <div class="desc">A constructor is a special function in a class that is automatically called when an object is created Example: <code>class Car{...} Car myCar("");</code></div>
+        </div>
+      </div>
+      <div class="card cpp">
+        <div class="inner">
+          <div class="title">Functions/Methods</div>
+          <div class="desc">Functions (or methods inside classes) are blocks of code that perform specific tasks. Example: <code>int add(int a, int b)  {return a+b;}</code></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JavaScript Basics -->
+  <section id="js">
+    <h2>JavaScript Basics</h2>
+    <div class="grid">
+      <div class="card js">
+        <div class="inner">
+          <div class="title">Variable</div>
+          <div class="desc">Stores data. Example: <code>let x = 10;</code></div>
+        </div>
+      </div>
+      <div class="card js">
+        <div class="inner">
+          <div class="title">Function</div>
+          <div class="desc">Reusable block of code. Example: <code>function add(a,b){return a+b;}</code></div>
+        </div>
+      </div>
+      <div class="card js">
+        <div class="inner">
+          <div class="title">DOM</div>
+          <div class="desc">Document Object Model for interacting with HTML elements.</div>
+        </div>
+      </div>
+      <div class="card js">
+        <div class="inner">
+          <div class="title">Event</div>
+          <div class="desc">Action detected by JS. Example: <code>onclick</code>, <code>onchange</code>.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Python Basics -->
+  <section id="py">
+    <h2>Python Basics</h2>
+    <div class="grid">
+      <div class="card py">
+        <div class="inner">
+          <div class="title">Variable</div>
+          <div class="desc">Stores data. Example: <code>x = 5</code></div>
+        </div>
+      </div>
+      <div class="card py">
+        <div class="inner">
+          <div class="title">List</div>
+          <div class="desc">Ordered collection of items. Example: <code>nums = [1,2,3]</code></div>
+        </div>
+      </div>
+      <div class="card py">
+        <div class="inner">
+          <div class="title">Dictionary</div>
+          <div class="desc">Key-value pairs. Example: <code>person = {"name":"John"}</code></div>
+        </div>
+      </div>
+      <div class="card py">
+        <div class="inner">
+          <div class="title">Function</div>
+          <div class="desc">Reusable block of code. Example: <code>def add(a,b): return a+b</code></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>&copy; 2025 Scripting Hub. All rights reserved.</footer>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Double</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <style>
+  body {
+    background-color: black;
+    color: white;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Poppins", sans-serif;
+    font-weight: 250;
+    font-style: normal;
+    font-size: 18px;
+    margin-top: 0px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 35px;
+    margin-top: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  p {
+    text-align: left;
+    margin-left: 20px;
+  }
+
+  #eg {
+    text-align: left;
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 250;
+    font-style: normal;
+  }
+
+  .container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+  }
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* left */
+    margin-left: 10px;
+  }
+  #codeInput {
+    width: 800px;
+    height: 200px;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #0d0d0d;
+    color: white;
+    border: none; /* updated */
+    font-family: "Poppins", sans-serif;
+    font-weight: 250;
+    font-style: normal;
+  }
+  #output {
+    width: 250px;
+    height: 150px;
+    background: #0d0d0d;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 18px;
+    margin-left: 50px;
+    border: none; /* updated */
+    font-family: "Poppins", sans-serif;
+    font-weight: 250;
+    font-style: normal;
+  }
+  .neon {
+    border: 2px solid #ad33ff;
+    box-shadow: 
+    0 0 1px #ad33ff,
+    0 0 1px #ad33ff,
+    0 0 10px #ad33ff,
+    0 0 1px rgba(153, 0, 255, 0.12);
+    transition: 0.3s ease;
+  }
+  button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  #result {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 40%;
+  }
+  #run {
+    margin-left: 5px;
+    border-radius: 8px;
+    border: 1px solid white;
+    background: black;
+    color: white;
+  }
+  #run:hover {
+  background: rgba(153, 0, 255, 0.6);
+  transition: 0.3s ease;
+  color: black;
+  border: 1px solid black;
+}
+  #j {
+    text-align: center;
+    margin-left: 95px;
+  }
+
+</style>
+</head>
+<body>
+  <h1><b>Lesson 6: Double</b></h1>
+  <p id="eg">We have already covered integer variables, and now we talk about double, which is often referred to as floating number variables. Double variables hold numbers with decimal points. For example:<br><br>
+    #include&lt;iostream&gt;<br>
+    double myvariable=11.5;<br>
+    int main() {<br>
+    std::cout<< myvariable;<br>
+  }<br><br>
+  The above example would put 11.5 into the output. We declared it by putting "double" as variable type. It is identical to float. However, the difference is that double is more precise. For example, if you have a short decimal number, float makes more sense. But if you have incredibly long numbers, then double is better to use because it is more accurate and uses more memory. I want you to output 1.7.
+</p>
+  <div class="container">
+    <div class="box">
+      <p><b>Your Code:</b></p>
+      <textarea id="codeInput" class="neon" placeholder="Type code....."></textarea>
+      <button id="run"onclick="checkCode()">Run</button>
+    </div>
+    <div class="box">
+      <p id="j"><b>Program Output:</b></p><br>
+      <div id="output" class="neon"></div>
+      <p id="result"></p>
+    </div>
+  </div>
+  <script>
+    function checkCode() {
+      const userCode = document.getElementById("codeInput").value.trim();
+      const result = document.getElementById("result");
+      const outputBox = document.getElementById("output");
+
+      // Clean up spacing
+      const clean = userCode
+      .replace(/\s+/g, ' ')  // Collapse all whitespace characters (spaces, tabs, newlines) to a single space
+      .replace(/^\s+|\s+$/g, '')
+      .replace(/\s*<\s*/g, '<')  // Remove spaces around '<'
+      .replace(/\s*>\s*/g, '>')  // Remove spaces around '>'
+      .replace(/\s*#\s*/g, '#')  // Remove spaces around '#'
+      .replace(/\s*;\s*/g, ';');
+
+      if (
+        clean.includes("#include<iostream>") &&
+        clean.includes("double myvariable=1.7;") &&
+        clean.includes("int main() {") &&
+        clean.includes('std::cout<<myvariable;') &&
+        clean.includes("}")
+        ) {
+        result.textContent = "✅ Correct!";
+        result.style.color = "green";
+        outputBox.textContent = "Output: 1.7";
+      } else {
+        result.textContent = "❌ Incorrect!";
+        result.style.color = "red";
+        outputBox.textContent = "";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scripting Hub — About</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#000;
+  --card:#0f1113;
+  --muted:#bfc7d1;
+  --neon:#00bfff;
+}
+
+/* General Styles */
+* { box-sizing:border-box; font-family:"Poppins", sans-serif; }
+body { margin:0; background:var(--bg); color:#fff; }
+@keyframes floatIn { from { opacity:0; transform:translateY(35px); } to { opacity:1; transform:translateY(0); } }
+
+/* Header & Navbar */
+header { padding:28px 18px; text-align:center; }
+.brand { font-size:1.6rem; font-weight:700; letter-spacing:1px; color:#fff; }
+.tag { font-weight:300; color:var(--muted); font-size:0.9rem; margin-top:6px; }
+nav { display:flex; gap:12px; justify-content:center; padding:12px 18px; }
+.nav-link { color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:10px; font-weight:600; }
+.nav-link:hover { color:#fff; background:rgba(255,255,255,0.03); }
+
+/* Main Content */
+.wrap { max-width:900px; margin:40px auto; padding:0 18px; display:flex; flex-direction:column; gap:25px; }
+
+/* ===== Cards with rainbow border + subtle glow ===== */
+.card {
+  position: relative;
+  background: var(--card);
+  border-radius:16px;
+  padding:25px 30px;
+  animation: floatIn 1s cubic-bezier(0.22,1,0.36,1) forwards;
+  z-index:1;
+}
+
+/* Gradient BORDER with tiny glow */
+.card::before {
+  content:"";
+  position:absolute;
+  inset:-2px; /* border thickness */
+  border-radius:18px;
+  background: linear-gradient(
+    120deg,
+    #00eaff,
+    #ad33ff,
+    #99ff99,
+    #ff944d
+  );
+  background-size:300% 300%;
+  animation: rainbowBorder 6s linear infinite;
+  box-shadow:
+    0 0 6px rgba(0,234,255,0.35),
+    0 0 10px rgba(173,51,255,0.25),
+    0 0 14px rgba(255,148,77,0.15);
+  z-index:-2;
+}
+
+/* Mask inside */
+.card::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: var(--card);
+  border-radius:16px;
+  z-index:-1;
+}
+
+@keyframes rainbowBorder {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+/* Card content */
+.card h2 { margin-top:0; margin-bottom:15px; font-size:1.5rem; }
+.card p { color:var(--muted); line-height:1.6; font-size:0.95rem; }
+
+/* Stats boxes inside card */
+.stats { display:flex; gap:30px; margin-top:20px; }
+.stat-box {
+  flex:1;
+  background: rgba(255,255,255,0.03);
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,0.05);
+}
+.stat-box h3 { margin:0; font-size:1.4rem; color:var(--neon); }
+.stat-box p { margin:5px 0 0 0; color:var(--muted); font-size:0.9rem; }
+
+/* Footer */
+footer { margin-top:36px; padding:28px 18px; text-align:center; color:var(--muted); font-size:0.9rem; }
+
+/* Responsive */
+@media(max-width:600px){
+  .stats { flex-direction:column; gap:15px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Scripting Hub</div>
+  <div class="tag">Interactive lessons • Practice playground • Beginner-friendly</div>
+</header>
+
+<nav>
+  <a class="nav-link" href="index.html">Learn</a>
+  <a class="nav-link" href="practice.html">Practice</a>
+  <a class="nav-link" href="about.html">About</a>
+  <a class="nav-link" href="profile.php">Profile</a>
+</nav>
+
+<main class="wrap">
+  <div class="card">
+    <h2>About Programming Hub</h2>
+    <p>
+      Programming Hub is designed to be beginner-friendly and easy to expand. 
+      It provides learners with a solid foundation in four main scripting languages: 
+      C, C++, JavaScript, and Python. The website is tailored for beginners who are 
+      genuinely passionate about coding, offering lessons and quizzes that teach the 
+      most basic concepts in an easy-to-understand format.
+    </p>
+    <p>
+      Each lesson introduces core programming principles and syntax, while quizzes 
+      allow learners to test their understanding and reinforce their knowledge. 
+      The combination of interactive lessons and immediate practice ensures that 
+      beginners gain confidence and competence in their coding journey.
+    </p>
+  </div>
+
+  <div class="card stats">
+    <div class="stat-box">
+      <h3>38</h3>
+      <p>Lessons</p>
+    </div>
+    <div class="stat-box">
+      <h3>20</h3>
+      <p>Quizzes</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 Scripting Hub. All Rights Reserved.
+</footer>
+
+</body>
+</html>

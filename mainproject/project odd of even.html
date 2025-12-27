@@ -1,0 +1,121 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Check Even or Odd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      font-family: "Poppins", sans-serif;
+      font-weight: 250;
+      font-style: normal;
+      font-size: 18px;
+      margin-top: 0px;
+    }
+    h1 { text-align: center; font-size: 35px; margin-top: 0; font-weight: 400; }
+    p { text-align: left; margin-left: 20px; }
+    .container { width: 100%; display: flex; justify-content: flex-start; gap: 40px; }
+    .box { display: flex; flex-direction: column; align-items: flex-start; margin-left: 10px; }
+    #codeInput {
+      width: 800px;
+      height: 200px;
+      font-size: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      background: #0d0d0d;
+      color: white;
+      border: none;
+      font-family: "Poppins", sans-serif;
+    }
+    #output {
+      width: 250px;
+      height: 150px;
+      background: #0d0d0d;
+      color: white;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 18px;
+      margin-left: 50px;
+      border: none;
+      white-space: pre-line;
+    }
+    .neon { border: 2px solid #00eaff; box-shadow:0 0 1px #00eaff,0 0 1px #00eaff,0 0 10px #00eaff,0 0 1px rgba(0,120,255,0.12); transition: 0.3s ease; }
+    button { margin-top: 15px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    #result { margin-top: 20px; font-size: 20px; font-weight: bold; margin-left: 40%; }
+    #run { margin-left: 5px; border-radius: 8px; border: 1px solid white; background: black; color: white; }
+    #run:hover { background: rgba(0,190,255,0.6); color: black; border: 1px solid rgba(0,190,255,0.6); }
+    #j { text-align: center; margin-left: 95px; }
+  </style>
+</head>
+<body>
+  <h1><b>Lesson 7: C program to Check Even or Odd</b></h1>
+  <p> In C Program, it checks if a number is odd or even by using num % 2—if the remainder is 0, it’s even; otherwise, it’s odd. <br>
+    Example in C using a fixed number:<br>
+    <span style="line-height:26px;">
+    #include&lt;stdio.h&gt;<br>
+    int main() {<br>
+    &nbsp;&nbsp;int num = 27;<br>
+    &nbsp;&nbsp;if(num % 2 == 0)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;printf("Even Number");<br>
+    &nbsp;&nbsp;else<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;printf("Odd Number");<br>
+    &nbsp;&nbsp;return 0;<br>
+    }
+    </span><br><br>
+    Now write your own C program using **int num = 27** and check if it is even or odd.
+  </p>
+
+  <div class="container">
+    <div class="box">
+      <p><b>Your Code:</b></p>
+      <textarea id="codeInput" class="neon" placeholder="Type code....."></textarea>
+      <button id="run" onclick="checkEvenOdd()">Run</button>
+    </div>
+
+    <div class="box">
+      <p id="j"><b>Program Output:</b></p><br>
+      <div id="output" class="neon"></div>
+      <p id="result"></p>
+    </div>
+  </div>
+
+  <script>
+    function checkEvenOdd() {
+      const userCode = document.getElementById("codeInput").value.toLowerCase();
+      const result = document.getElementById("result");
+      const output = document.getElementById("output");
+
+      // Check for required parts
+      const hasHeader = userCode.includes("#include<stdio.h>") || userCode.includes("#include <stdio.h>");
+      const hasMain = userCode.includes("int main");
+      const hasNum = userCode.includes("int num = 27");
+      const hasIfElse = userCode.includes("if(num%2==0)") || userCode.includes("if(num % 2 == 0)");
+      const hasPrint = userCode.includes("printf");
+
+      // Validation
+      if(hasHeader && hasMain && hasNum && hasIfElse && hasPrint){
+        result.innerHTML = "✅ Correct!";
+        result.style.color = "green";
+        output.innerHTML = "Odd Number"; // Because 27 is odd
+      } else {
+        result.innerHTML = "❌ Incorrect!";
+        result.style.color = "red";
+        output.innerHTML = "";
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+

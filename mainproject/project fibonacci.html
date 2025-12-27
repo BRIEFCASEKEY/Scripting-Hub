@@ -1,0 +1,90 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fibonacci Series</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: black; color: white; padding: 25px; font-family: "Poppins", sans-serif; font-weight: 250; font-size: 18px; }
+    h1 { text-align: center; font-size: 35px; margin-top: 0; font-weight: 400; }
+    p { margin-left: 20px; }
+    .container { display: flex; gap: 40px; }
+    .box { display: flex; flex-direction: column; align-items: flex-start; margin-left: 10px; }
+    #codeInput { width: 800px; height: 200px; padding: 10px; border-radius: 8px; background: #0d0d0d; color: white; border: none; font-family: "Poppins", sans-serif; }
+    #output { width: 350px; height: 150px; background: #0d0d0d; color: white; border-radius: 8px; padding: 10px; font-size: 18px; margin-left: 50px; border: none; white-space: pre-line; }
+    .neon { border: 2px solid #00eaff; box-shadow:0 0 1px #00eaff,0 0 1px #00eaff,0 0 10px #00eaff,0 0 1px rgba(0,120,255,0.12); transition: 0.3s ease; }
+    button { margin-top: 15px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    #result { margin-top: 20px; font-size: 20px; font-weight: bold; margin-left: 40%; }
+    #run { margin-left: 5px; border-radius: 8px; border: 1px solid white; background: black; color: white; }
+    #run:hover { background: rgba(0,190,255,0.6); color: black; border: 1px solid rgba(0,190,255,0.6); }
+    #j { text-align: center; margin-left: 95px; }
+  </style>
+</head>
+<body>
+  <h1><b>Lesson 12: C program to Print Fibonacci Series up to n terms</b></h1>
+  <p>In C program, to print the Fibonacci series up to n terms, start with 0 and 1 and use a loop to add the last two numbers repeatedly until n terms are printed.<br>
+    Example in C (n = 10):<br>
+    <span style="line-height:26px;">
+    #include&lt;stdio.h&gt;<br>
+    int main() {<br>
+    &nbsp;&nbsp;int n = 10;<br>
+    &nbsp;&nbsp;int a = 0, b = 1, c;<br>
+    &nbsp;&nbsp;printf("%d %d ", a, b);<br>
+    &nbsp;&nbsp;for(int i = 3; i <= n; i++) {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;c = a + b;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;printf("%d ", c);<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;a = b;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;b = c;<br>
+    &nbsp;&nbsp;}<br>
+    &nbsp;&nbsp;return 0;<br>
+    }
+    </span><br><br>
+    Now write your own C program to print Fibonacci series up to **10 terms**.
+  </p>
+
+  <div class="container">
+    <div class="box">
+      <p><b>Your Code:</b></p>
+      <textarea id="codeInput" class="neon" placeholder="Type code....."></textarea>
+      <button id="run" onclick="checkFibonacci()">Run</button>
+    </div>
+
+    <div class="box">
+      <p id="j"><b>Program Output:</b></p><br>
+      <div id="output" class="neon"></div>
+      <p id="result"></p>
+    </div>
+  </div>
+
+  <script>
+    function checkFibonacci() {
+      const userCode = document.getElementById("codeInput").value.toLowerCase();
+      const result = document.getElementById("result");
+      const output = document.getElementById("output");
+
+      const hasHeader = /#include\s*<stdio.h>/.test(userCode);
+      const hasMain = userCode.includes("int main");
+      const hasN = /int\s+n\s*=\s*10/.test(userCode);
+      const hasVars = /int\s+a\s*=\s*0\s*,\s*b\s*=\s*1\s*,?\s*c?/.test(userCode);
+      const hasPrintAB = /printf\s*\(\s*["']%d %d/.test(userCode);
+      const hasForLoop = /for\s*\(\s*int\s*i\s*=\s*3\s*;\s*i\s*<=\s*n\s*;\s*i\+\+\s*\)/.test(userCode) ||
+                         /for\s*\(\s*i\s*=\s*3\s*;\s*i\s*<=\s*n\s*;\s*i\+\+\s*\)/.test(userCode);
+      const hasAdd = /c\s*=\s*a\s*\+\s*b/.test(userCode);
+      const hasUpdate = /a\s*=\s*b/.test(userCode) && /b\s*=\s*c/.test(userCode);
+      const hasPrintC = /printf\s*\(\s*["']%d/.test(userCode);
+
+      if(hasHeader && hasMain && hasN && hasVars && hasPrintAB && hasForLoop && hasAdd && hasUpdate && hasPrintC){
+        result.innerHTML = "✅ Correct!";
+        result.style.color = "green";
+        output.innerHTML = "Output: 0 1 1 2 3 5 8 13 21 34";
+      } else {
+        result.innerHTML = "❌ Incorrect!";
+        result.style.color = "red";
+        output.innerHTML = "";
+      }
+    }
+  </script>
+</body>
+</html>

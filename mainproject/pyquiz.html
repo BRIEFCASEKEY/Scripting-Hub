@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#000;
+      --card:#0f1113;
+      --muted:#bfc7d1;
+      --neon-c:#00bfff;
+      --neon-js:#ffb86b;
+      --neon-cpp:#a78bfa;
+      --neon-py:#7efc82;
+    }
+    h1 {
+    margin-bottom: 20px;
+    font-size: 30px;
+    text-align: center;
+    color: #7CED72;
+  }
+    * { box-sizing: border-box; 
+    font-family: 'Poppins', sans-serif;}
+    body {background:var(--bg); color:#fff; font-family:Poppins, sans-serif; padding:20px }
+    header { padding:28px 18px; text-align:center; }
+    .brand { font-size:1.6rem; font-weight:700; letter-spacing:1px; color:#fff; }
+    .tag { font-weight:300; color:var(--muted); font-size:0.9rem; margin-top:6px; }
+
+    nav { display:flex; gap:12px; justify-content:center; padding:12px 18px; }
+    .nav-link { color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:10px; font-weight:600; }
+    .nav-link:hover { color:#fff; background:rgba(255,255,255,0.03); }
+    footer { margin-top:36px; padding:28px 18px; text-align:center; color:var(--muted); font-size:0.9rem; }
+    a.lesson-link { text-decoration: none; }
+
+    body { margin: 0; font-family: Arial, sans-serif; background-color: black; color: white; }
+
+    /* Quiz Container */
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 50px;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+    }
+
+    .left {
+      width: 60%;
+      min-width: 300px;
+    }
+
+    .question {
+      font-size: 28px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: floatIn 1s ease forwards;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .option {
+      background-color: #222;
+      padding: 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 0;
+      animation: floatIn 1s ease forwards;
+      border: 3px solid transparent;
+    }
+
+    /* Float-in Animation Delays */
+    .option:nth-child(1) { animation-delay: 0.2s; }
+    .option:nth-child(2) { animation-delay: 0.4s; }
+    .option:nth-child(3) { animation-delay: 0.6s; }
+    .option:nth-child(4) { animation-delay: 0.8s; }
+
+    .option.correct { border: 3px solid green; }
+    .option.wrong { border: 3px solid red; }
+
+    .checkmark { font-size: 24px; display: none; }
+    .checkmark.correct { color: green; }
+    .checkmark.wrong { color: red; }
+
+    .right {
+      width: 30%;
+      font-size: 24px;
+      text-align: right;
+      align-self: flex-start;
+      min-width: 200px;
+    }
+
+    /* Float-in Animation */
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive for Mobile */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .left, .right {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 20px;
+      }
+
+      .question { font-size: 28px; margin-bottom: 30px; }
+      .option { font-size: 18px; padding: 15px; }
+      .right { font-size: 20px; text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">Scripting Hub</div>
+    <div class="tag">Interactive lessons • Practice playground • Beginner-friendly</div>
+  </header>
+
+  <nav>
+    <a class="nav-link" href="menu.html">Learn</a>
+  <a class="nav-link" href="practice.html">Concepts</a>
+  <a class="nav-link" href="about.html">About</a>
+  <a class="nav-link" href="profile.php">Profile</a>
+  </nav>
+  <h1>Python Quizes</h1>
+
+  <!-- First Question -->
+  <div class="container">
+    <div class="left">
+      <div class="question">1. What does a function do?</div>
+      <div class="options">
+        <div class="option" onclick="selectOption(this, false)">
+          <span>Give a random output</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, false)">
+          <span>Creates a new game object</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, false)">
+          <span>Runs a piece of code when a condition is met</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, true)">
+          <span>Runs a piece of code when called</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second Question -->
+  <div class="container">
+    <div class="left">
+      <div class="question">2. What is the correct way to combine strings?</div>
+      <div class="options">
+        <div class="option" onclick="selectOption(this, false)">
+          <span>"First String","Second String"</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, false)">
+          <span>"First String".."Second String"</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, true)">
+          <span>"First String"+"Second String"</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, false)">
+          <span>"First String"."Second String"</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left">
+      <div class="question">3. How do you write in the output?</div>
+      <div class="options">
+        <div class="option" onclick="selectOption(this, false)">
+          <span>console.log</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, false)">
+          <span>printf()</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, false)">
+          <span>cout</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, true)">
+          <span>print()</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="left">
+      <div class="question">4. What is a variable?</div>
+      <div class="options">
+        <div class="option" onclick="selectOption(this, true)">
+          <span>A word or letter with an assigned value</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, false)">
+          <span>A number that automatically adjusts</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, false)">
+          <span>A term used for random numbers</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, false)">
+          <span>A type of sound effect</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="left">
+      <div class="question">5. What is the correct file extension for a Python file?</div>
+      <div class="options">
+        <div class="option" onclick="selectOption(this, false)">
+          <span>.java</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, true)">
+          <span>.py</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, false)">
+          <span>.html</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+        <div class="option" onclick="selectOption(this, false)">
+          <span>.exe</span>
+          <span class="checkmark wrong">✖</span>
+          <span class="checkmark correct">✔</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function selectOption(option, isCorrect) {
+      const options = option.closest('.container').querySelectorAll('.option');
+
+      options.forEach(opt => {
+        opt.classList.remove('correct', 'wrong');
+        opt.querySelector('.checkmark.correct').style.display = 'none';
+        opt.querySelector('.checkmark.wrong').style.display = 'none';
+      });
+
+      if (isCorrect) {
+        option.classList.add('correct');
+        option.querySelector('.checkmark.correct').style.display = 'inline';
+      } else {
+        option.classList.add('wrong');
+        option.querySelector('.checkmark.wrong').style.display = 'inline';
+        // Also show correct answer
+        options.forEach(opt => {
+          if (opt.getAttribute('onclick').includes('true')) {
+            opt.classList.add('correct');
+            opt.querySelector('.checkmark.correct').style.display = 'inline';
+          }
+        });
+      }
+    }
+  </script>
+</body>
+</html>

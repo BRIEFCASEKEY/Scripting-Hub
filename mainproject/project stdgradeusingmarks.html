@@ -1,0 +1,88 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Grade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: black; color: white; padding: 25px; font-family: "Poppins", sans-serif; font-weight: 250; font-size: 18px; }
+    h1 { text-align: center; font-size: 35px; margin-top: 0; font-weight: 400; }
+    p { margin-left: 20px; }
+    .container { display: flex; gap: 40px; }
+    .box { display: flex; flex-direction: column; align-items: flex-start; margin-left: 10px; }
+    #codeInput { width: 800px; height: 200px; padding: 10px; border-radius: 8px; background: #0d0d0d; color: white; border: none; font-family: "Poppins", sans-serif; }
+    #output { width: 250px; height: 150px; background: #0d0d0d; color: white; border-radius: 8px; padding: 10px; font-size: 18px; margin-left: 50px; border: none; white-space: pre-line; }
+    .neon { border: 2px solid #00eaff; box-shadow:0 0 1px #00eaff,0 0 1px #00eaff,0 0 10px #00eaff,0 0 1px rgba(0,120,255,0.12); transition: 0.3s ease; }
+    button { margin-top: 15px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    #result { margin-top: 20px; font-size: 20px; font-weight: bold; margin-left: 40%; }
+    #run { margin-left: 5px; border-radius: 8px; border: 1px solid white; background: black; color: white; }
+    #run:hover { background: rgba(0,190,255,0.6); color: black; border: 1px solid rgba(0,190,255,0.6); }
+    #j { text-align: center; margin-left: 95px; }
+  </style>
+</head>
+<body>
+  <h1><b>Lesson 10: C program to Find Student Grade Using Marks</b></h1>
+  <p> in C program,to find a student’s grade, compare their marks against set ranges using if-else statements and assign the corresponding grade.<br>
+    Example in C:<br>
+    <span style="line-height:26px;">
+    #include&lt;stdio.h&gt;<br>
+    int main() {<br>
+    &nbsp;&nbsp;int marks = 78;<br>
+    &nbsp;&nbsp;if(marks >= 90)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;printf("Grade A");<br>
+    &nbsp;&nbsp;else if(marks >= 75)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;printf("Grade B");<br>
+    &nbsp;&nbsp;else if(marks >= 60)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;printf("Grade C");<br>
+    &nbsp;&nbsp;else if(marks >= 40)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;printf("Grade D");<br>
+    &nbsp;&nbsp;else<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;printf("Grade F");<br>
+    &nbsp;&nbsp;return 0;<br>
+    }
+    </span><br><br>
+    Now write your own C program to check grade for <b>marks = 85</b>.
+  </p>
+
+  <div class="container">
+    <div class="box">
+      <p><b>Your Code:</b></p>
+      <textarea id="codeInput" class="neon" placeholder="Type code....."></textarea>
+      <button id="run" onclick="checkGrade()">Run</button>
+    </div>
+
+    <div class="box">
+      <p id="j"><b>Program Output:</b></p><br>
+      <div id="output" class="neon"></div>
+      <p id="result"></p>
+    </div>
+  </div>
+
+  <script>
+    function checkGrade() {
+      const userCode = document.getElementById("codeInput").value.toLowerCase();
+      const result = document.getElementById("result");
+      const output = document.getElementById("output");
+
+      const hasHeader = /#include\s*<stdio.h>/.test(userCode);
+      const hasMain = userCode.includes("int main");
+      const marksCorrect = /marks\s*=\s*85/.test(userCode);
+      const hasIfElse = /if\s*\(\s*marks\s*>=\s*90\s*\)/.test(userCode) || /else\s*if\s*\(/.test(userCode);
+      const hasPrint = userCode.includes("printf");
+
+      if(hasHeader && hasMain && marksCorrect && hasIfElse && hasPrint){
+        result.innerHTML = "✅ Correct!";
+        result.style.color = "green";
+        output.innerHTML = "Output: Grade B";
+      } else {
+        result.innerHTML = "❌ Incorrect!";
+        result.style.color = "red";
+        output.innerHTML = "";
+      }
+    }
+  </script>
+</body>
+</html>
+
